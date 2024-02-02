@@ -20,14 +20,19 @@ return: 0x67452301
 */
 int swap_bytes(int input)
 {
-  int output;
+  int output = 0;
+  byte_pointer p_output = (byte_pointer)&output;
   //int l = 255
+  printf("enter a hex number\n");
   input = scanf("%x", &input);
   byte_pointer p = (byte_pointer)&input;
   for (int i = 0; i < 4; i++)
   {
+    *(p_output + i) = *(p + 3 - i);
+    
     *(p + i) = 0xff;
     printf("%p\t%x\n", p+i, *(p + i));
+    
   }
   
 
